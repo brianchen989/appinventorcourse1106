@@ -1,0 +1,9 @@
+{
+  "name": "daymark-schedule-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Modular schedule and gamified task manager web app",
+  "scripts": { "start": "node server.cjs" },
+  "engines": { "node": ">=18" }
+}
