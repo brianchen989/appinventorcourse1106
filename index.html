@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,151 +18,1519 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    * { box-sizing: border-box; }
-    body { min-width: 320px; min-height: 100vh; margin: 0; }
-    .page-shell { width: min(100% - 40px, 1040px); margin: 0 auto; padding: 48px 0 64px; }
-    header { margin-bottom: 32px; }
-    .eyebrow { margin: 0 0 10px; color: #687d55; font-size: 0.78rem; font-weight: 750; letter-spacing: 0.14em; }
-    h1 { margin: 0; font-size: clamp(2rem, 6vw, 3.25rem); letter-spacing: -0.045em; line-height: 1.15; }
-    .today-date { margin: 12px 0 0; color: #707168; font-size: 1rem; }
-    .content-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr); gap: 20px; align-items: start; }
-    .panel { min-width: 0; padding: 26px; border: 1px solid #e8e6de; border-radius: 20px; background: #fff; box-shadow: 0 12px 36px rgb(40 38 28 / 4%); }
-    .panel + .panel { margin-top: 20px; }
-    .panel-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
-    h2 { margin: 0; font-size: 1.2rem; letter-spacing: -0.02em; }
-    .count { color: #85867d; font-size: 0.85rem; }
-    .schedule-list, .todo-list { display: grid; gap: 12px; }
-    .schedule-item { display: grid; grid-template-columns: 66px 3px minmax(0, 1fr); gap: 14px; align-items: stretch; padding: 15px; border: 1px solid #efeee9; border-radius: 14px; }
-    .schedule-time { padding-top: 2px; color: #536c42; font-size: 0.9rem; font-weight: 750; }
-    .schedule-line { border-radius: 4px; background: #dce6d3; }
-    .schedule-item h3 { margin: 0; font-size: 0.98rem; overflow-wrap: anywhere; }
-    .schedule-item p { margin: 5px 0 0; color: #77786f; font-size: 0.86rem; overflow-wrap: anywhere; }
-    .todo-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid #efeee9; }
-    .todo-item:last-child { padding-bottom: 0; border-bottom: 0; }
-    .todo-title { min-width: 0; color: #34362f; font-size: 0.94rem; line-height: 1.5; overflow-wrap: anywhere; }
-    .status { flex: 0 0 auto; padding: 5px 10px; border-radius: 999px; font-size: 0.76rem; font-weight: 700; }
-    .status.pending { color: #8a641b; background: #fbf0d6; }
-    .status.progress { color: #45668b; background: #e7f0f8; }
-    .status.done { color: #4f7040; background: #e8f0e2; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .field { display: grid; gap: 7px; }
-    .field.full { grid-column: 1 / -1; }
-    label { color: #55574f; font-size: 0.84rem; font-weight: 650; }
-    input { display: block; width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px; border: 1px solid #e2e1d9; border-radius: 10px; background: #fff; color: #252820; font: inherit; font-size: 0.9rem; }
-    input:focus { border-color: #82966f; outline: 3px solid #e8efe2; }
-    button { min-height: 46px; padding: 0 18px; border: 0; border-radius: 11px; background: #536c42; color: #fff; font: inherit; font-weight: 700; cursor: pointer; transition: background 150ms ease, transform 150ms ease; }
-    button:hover { background: #405532; }
-    button:active { transform: translateY(1px); }
-    button:focus-visible { outline: 3px solid #b7cba4; outline-offset: 3px; }
-    .submit-button { width: 100%; margin-top: 16px; }
-    .form-message { min-height: 1.4em; margin: 10px 0 0; color: #536c42; font-size: 0.85rem; }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .page-shell {
+      width: min(100% - 40px, 1040px);
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+
+    header {
+      margin-bottom: 32px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #687d55;
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 3.25rem);
+      letter-spacing: -0.045em;
+      line-height: 1.15;
+    }
+
+    .today-date {
+      margin: 12px 0 0;
+      color: #707168;
+      font-size: 1rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      min-width: 0;
+      padding: 26px;
+      border: 1px solid #e8e6de;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 12px 36px rgb(40 38 28 / 4%);
+    }
+
+    .panel+.panel {
+      margin-top: 20px;
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .count {
+      color: #85867d;
+      font-size: 0.85rem;
+    }
+
+    .schedule-list,
+    .todo-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 66px 3px minmax(0, 1fr);
+      gap: 14px;
+      align-items: stretch;
+      padding: 15px;
+      border: 1px solid #efeee9;
+      border-radius: 14px;
+    }
+
+    .schedule-time {
+      padding-top: 2px;
+      color: #536c42;
+      font-size: 0.9rem;
+      font-weight: 750;
+    }
+
+    .schedule-line {
+      border-radius: 4px;
+      background: #dce6d3;
+    }
+
+    .schedule-item h3 {
+      margin: 0;
+      font-size: 0.98rem;
+      overflow-wrap: anywhere;
+    }
+
+    .schedule-item p {
+      margin: 5px 0 0;
+      color: #77786f;
+      font-size: 0.86rem;
+      overflow-wrap: anywhere;
+    }
+
+    .todo-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid #efeee9;
+    }
+
+    .todo-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .todo-title {
+      min-width: 0;
+      color: #34362f;
+      font-size: 0.94rem;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .status {
+      flex: 0 0 auto;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .status.pending {
+      color: #8a641b;
+      background: #fbf0d6;
+    }
+
+    .status.progress {
+      color: #45668b;
+      background: #e7f0f8;
+    }
+
+    .status.done {
+      color: #4f7040;
+      background: #e8f0e2;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: #55574f;
+      font-size: 0.84rem;
+      font-weight: 650;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid #e2e1d9;
+      border-radius: 10px;
+      background: #fff;
+      color: #252820;
+      font: inherit;
+      font-size: 0.9rem;
+    }
+
+    input:focus {
+      border-color: #82966f;
+      outline: 3px solid #e8efe2;
+    }
+
+    button {
+      min-height: 46px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 11px;
+      background: #536c42;
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 150ms ease, transform 150ms ease;
+    }
+
+    button:hover {
+      background: #405532;
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    button:focus-visible {
+      outline: 3px solid #b7cba4;
+      outline-offset: 3px;
+    }
+
+    .submit-button {
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .form-message {
+      min-height: 1.4em;
+      margin: 10px 0 0;
+      color: #536c42;
+      font-size: 0.85rem;
+    }
 
 
-    :root { --accent:#536c42; --accent-soft:#e8efe2; --surface:#fff; --text:#252820; --muted:#707168; }
-    body { color:var(--text); background:var(--page-bg,#f6f5f1); transition:background .35s,color .35s; }
-    .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:28px; }
-    .brand { font-weight:800; letter-spacing:.04em; }
-    .nav { display:flex; flex-wrap:wrap; gap:6px; }
-    .nav a { padding:9px 12px; border-radius:999px; color:inherit; text-decoration:none; font-size:.9rem; }
-    .nav a:hover,.nav a[aria-current="page"] { background:var(--accent-soft); color:var(--accent); }
-    .toolbar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; margin:16px 0; }
-    .toolbar-group { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
-    .toolbar button,.toolbar select,.toolbar input { min-height:40px; }
-    .toolbar select,.toolbar input { padding:8px 10px; border:1px solid #e2e1d9; border-radius:10px; background:var(--surface); color:inherit; font:inherit; }
-    button.secondary { background:#eef1e9; color:#405532; }
-    button.secondary:hover { background:#dfe8d7; }
-    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:18px 0; }
-    .stat { padding:16px; border:1px solid #e8e6de; border-radius:16px; background:var(--surface); }
-    .stat strong { display:block; font-size:1.4rem; }
-    .stat span { color:var(--muted); font-size:.82rem; }
-    .schedule-item { animation:rise .28s ease both; transition:transform .2s,box-shadow .2s; }
-    .schedule-item:hover { transform:translateY(-2px); box-shadow:0 8px 22px #30302012; }
-    @keyframes rise { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } }
-    .todo-item { gap:9px; }
-    .todo-check { width:19px; height:19px; min-height:19px; padding:0; accent-color:var(--accent); }
-    .todo-item.completed .todo-title { text-decoration:line-through; opacity:.58; }
-    .todo-item button { min-height:30px; padding:0 9px; background:#f5e9e6; color:#8b4b3f; font-size:.76rem; }
-    .empty-state { padding:22px; text-align:center; color:var(--muted); border:1px dashed #d9d8cf; border-radius:14px; }
-    .toast { position:fixed; z-index:10; left:50%; bottom:24px; transform:translate(-50%,16px); padding:12px 18px; border-radius:12px; background:#252820; color:#fff; opacity:0; pointer-events:none; transition:.25s; box-shadow:0 8px 28px #0002; }
-    .toast.show { opacity:1; transform:translate(-50%,0); }
-    body.dark { --page-bg:#20231f; --surface:#2b2f29; --text:#f2f1e9; --muted:#b5b6aa; --accent:#b1c99b; --accent-soft:#394533; }
-    body.dark .panel,body.dark .stat { border-color:#42463e; }
-    body.dark .schedule-item,body.dark input,body.dark select { background:#2b2f29; border-color:#42463e; color:#f2f1e9; }
-    body.dark .schedule-item p,body.dark .todo-title,body.dark label { color:#d5d5ca; }
-    body.dark .status.pending { background:#51452d; color:#f1d18a; }
-    body.dark .status.progress { background:#304251; color:#a8d0f1; }
-    body.dark .status.done { background:#354632; color:#b9d9a7; }
-    .page-transition { animation:page-in .35s ease both; }
-    @keyframes page-in { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:translateY(0) } }
-    @media(max-width:600px){.topbar{align-items:flex-start;flex-direction:column}.stats{gap:8px}.stat{padding:12px}}
+    :root {
+      --accent: #536c42;
+      --accent-soft: #e8efe2;
+      --surface: #fff;
+      --text: #252820;
+      --muted: #707168;
+    }
+
+    body {
+      color: var(--text);
+      background: var(--page-bg, #f6f5f1);
+      transition: background .35s, color .35s;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .nav a {
+      padding: 9px 12px;
+      border-radius: 999px;
+      color: inherit;
+      text-decoration: none;
+      font-size: .9rem;
+    }
+
+    .nav a:hover,
+    .nav a[aria-current="page"] {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .toolbar-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toolbar button,
+    .toolbar select,
+    .toolbar input {
+      min-height: 40px;
+    }
+
+    .toolbar select,
+    .toolbar input {
+      padding: 8px 10px;
+      border: 1px solid #e2e1d9;
+      border-radius: 10px;
+      background: var(--surface);
+      color: inherit;
+      font: inherit;
+    }
+
+    button.secondary {
+      background: #eef1e9;
+      color: #405532;
+    }
+
+    button.secondary:hover {
+      background: #dfe8d7;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .stat {
+      padding: 16px;
+      border: 1px solid #e8e6de;
+      border-radius: 16px;
+      background: var(--surface);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .schedule-item {
+      animation: rise .28s ease both;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .schedule-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px #30302012;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(10px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .todo-item {
+      gap: 9px;
+    }
+
+    .todo-check {
+      width: 19px;
+      height: 19px;
+      min-height: 19px;
+      padding: 0;
+      accent-color: var(--accent);
+    }
+
+    .todo-item.completed .todo-title {
+      text-decoration: line-through;
+      opacity: .58;
+    }
+
+    .todo-item button {
+      min-height: 30px;
+      padding: 0 9px;
+      background: #f5e9e6;
+      color: #8b4b3f;
+      font-size: .76rem;
+    }
+
+    .empty-state {
+      padding: 22px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed #d9d8cf;
+      border-radius: 14px;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 10;
+      left: 50%;
+      bottom: 24px;
+      transform: translate(-50%, 16px);
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: #252820;
+      color: #fff;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s;
+      box-shadow: 0 8px 28px #0002;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    body.dark {
+      --page-bg: #20231f;
+      --surface: #2b2f29;
+      --text: #f2f1e9;
+      --muted: #b5b6aa;
+      --accent: #b1c99b;
+      --accent-soft: #394533;
+    }
+
+    body.dark .panel,
+    body.dark .stat {
+      border-color: #42463e;
+    }
+
+    body.dark .schedule-item,
+    body.dark input,
+    body.dark select {
+      background: #2b2f29;
+      border-color: #42463e;
+      color: #f2f1e9;
+    }
+
+    body.dark .schedule-item p,
+    body.dark .todo-title,
+    body.dark label {
+      color: #d5d5ca;
+    }
+
+    body.dark .status.pending {
+      background: #51452d;
+      color: #f1d18a;
+    }
+
+    body.dark .status.progress {
+      background: #304251;
+      color: #a8d0f1;
+    }
+
+    body.dark .status.done {
+      background: #354632;
+      color: #b9d9a7;
+    }
+
+    .page-transition {
+      animation: page-in .35s ease both;
+    }
+
+    @keyframes page-in {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @media(max-width:600px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column
+      }
+
+      .stats {
+        gap: 8px
+      }
+
+      .stat {
+        padding: 12px
+      }
+    }
 
 
-.auth-shell{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:linear-gradient(135deg,#edf1e7,#f8f5ec 55%,#e9eee3)}.auth-card{width:min(100%,440px);padding:32px;border:1px solid #e5e7dc;border-radius:24px;background:#fff;box-shadow:0 24px 80px #27301c20;animation:page-in .35s ease both}.auth-card h1{margin:12px 0 8px;font-size:1.8rem}.auth-copy{margin:0 0 22px;color:#707168;line-height:1.6}.auth-tabs{display:flex;gap:8px;margin-bottom:18px;padding:5px;border-radius:12px;background:#f3f4ef}.auth-tabs button{flex:1;min-height:40px;padding:8px;background:transparent;color:#63665d}.auth-tabs button.active{background:#fff;color:#405532;box-shadow:0 2px 8px #2221}.auth-form{display:grid;gap:13px}.auth-submit{width:100%;margin-top:5px}.auth-message{min-height:1.3em;margin:2px 0 0;color:#8b4b3f;font-size:.86rem}.auth-note{margin:16px 0 0;color:#898b82;font-size:.78rem;line-height:1.5}.user-tools{display:flex;align-items:center;gap:10px}.user-email{max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#63665d;font-size:.85rem}.hidden{display:none!important}@media(max-width:520px){.auth-card{padding:24px}.user-email{max-width:120px}}
+    .auth-panel {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 22px;
+      padding: 18px 22px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow)
+    }
+
+    .auth-profile {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      flex: 1 1 260px
+    }
+
+    .auth-avatar {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-soft);
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1.1rem;
+      overflow: hidden
+    }
+
+    .auth-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .auth-info {
+      min-width: 0
+    }
+
+    .auth-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px
+    }
+
+    .auth-name {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 750;
+      color: var(--ink);
+      overflow-wrap: anywhere
+    }
+
+    .auth-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: .74rem;
+      font-weight: 700;
+      background: #f4f5f1;
+      color: #687064
+    }
+
+    .auth-badge.loading {
+      background: #e7f0f8;
+      color: #355d86
+    }
+
+    .auth-badge.signed-in {
+      background: #e8f0e2;
+      color: #3f6331
+    }
+
+    .auth-badge.signed-out {
+      background: #f4f5f1;
+      color: #687064
+    }
+
+    .auth-detail {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: .84rem;
+      overflow-wrap: anywhere
+    }
+
+    .auth-uid {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: .76rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      overflow-wrap: anywhere
+    }
+
+    .auth-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px
+    }
+
+    .google-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid #dadce0;
+      border-radius: 11px;
+      background: #fff;
+      color: #202124;
+      font-weight: 700
+    }
+
+    .google-btn:hover {
+      background: #f7f8f8;
+      border-color: #c6c9ce
+    }
+
+    .google-btn:disabled,
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none
+    }
+
+    .auth-message {
+      flex: 1 0 100%;
+      margin: 0;
+      font-size: .85rem;
+      color: var(--accent)
+    }
+
+    .auth-message.error {
+      color: #a13e32
+    }
+
+    .auth-message:empty {
+      display: none
+    }
+
+    .user-tools {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .nav-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      flex: 0 0 28px
+    }
+
+    .user-email {
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: .85rem;
+      font-weight: 600
+    }
+
+    .hidden {
+      display: none !important
+    }
+
+    body.dark .auth-badge {
+      background: #343a32;
+      color: #c0c5b9
+    }
+
+    body.dark .auth-badge.loading {
+      background: #2d3f4f;
+      color: #a8d0f1
+    }
+
+    body.dark .auth-badge.signed-in {
+      background: #354632;
+      color: #b9d9a7
+    }
+
+    body.dark .google-btn {
+      background: #343b32;
+      border-color: #4b5548;
+      color: #f2f3ed
+    }
+
+    body.dark .google-btn:hover {
+      background: #3e473c
+    }
+
+    body.dark .auth-message.error {
+      color: #f2a69c
+    }
+
+    @media(max-width:520px) {
+      .auth-panel {
+        padding: 16px
+      }
+
+      .auth-controls {
+        width: 100%
+      }
+
+      .auth-controls button {
+        flex: 1
+      }
+
+      .user-email {
+        max-width: 96px
+      }
+    }
 
     @media (max-width: 720px) {
-      .page-shell { width: min(100% - 28px, 560px); padding-top: 32px; }
-      .content-grid { grid-template-columns: minmax(0, 1fr); }
-      .panel { padding: 21px; }
+      .page-shell {
+        width: min(100% - 28px, 560px);
+        padding-top: 32px;
+      }
+
+      .content-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .panel {
+        padding: 21px;
+      }
     }
+
     @media (max-width: 420px) {
-      .page-shell { width: calc(100% - 24px); padding-top: 24px; }
-      header { margin-bottom: 24px; }
-      .content-grid { gap: 14px; }
-      .panel { padding: 16px; border-radius: 16px; }
-      .panel + .panel { margin-top: 14px; }
-      .panel-heading { gap: 8px; margin-bottom: 16px; }
-      .form-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-      .field, .field.full { min-width: 0; grid-column: auto; }
-      .schedule-item { grid-template-columns: 50px 3px minmax(0, 1fr); gap: 9px; padding: 11px; }
-      .todo-item { align-items: flex-start; gap: 8px; }
-      .status { padding: 5px 8px; }
+      .page-shell {
+        width: calc(100% - 24px);
+        padding-top: 24px;
+      }
+
+      header {
+        margin-bottom: 24px;
+      }
+
+      .content-grid {
+        gap: 14px;
+      }
+
+      .panel {
+        padding: 16px;
+        border-radius: 16px;
+      }
+
+      .panel+.panel {
+        margin-top: 14px;
+      }
+
+      .panel-heading {
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .field,
+      .field.full {
+        min-width: 0;
+        grid-column: auto;
+      }
+
+      .schedule-item {
+        grid-template-columns: 50px 3px minmax(0, 1fr);
+        gap: 9px;
+        padding: 11px;
+      }
+
+      .todo-item {
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .status {
+        padding: 5px 8px;
+      }
     }
+
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
-:root{--page-bg:#f4f5ef;--surface:#fff;--ink:#24291f;--muted:#73796e;--accent:#4f6841;--accent-soft:#eaf0e5;--border:#e7e9e1;--shadow:0 10px 28px rgba(36,41,31,.055);color:var(--ink);background:var(--page-bg)}body{background:var(--page-bg);color:var(--ink);line-height:1.55}.page-shell{width:min(100% - 48px,1160px);padding:28px 0 64px}.topbar{position:sticky;top:12px;z-index:8;display:flex;align-items:center;gap:18px;justify-content:space-between;padding:10px 12px 10px 18px;margin-bottom:42px;border:1px solid rgba(231,233,225,.9);border-radius:18px;background:rgba(255,255,255,.9);box-shadow:0 8px 28px rgba(36,41,31,.06);backdrop-filter:blur(16px)}.brand{white-space:nowrap;color:#34432d;font-size:1rem}.nav{flex:1;justify-content:center;gap:4px}.nav a{padding:9px 13px;border-radius:11px;color:#676d62;font-weight:650;transition:background .2s,color .2s,transform .2s}.nav a:hover{background:#f3f5ef;color:#34432d;transform:translateY(-1px)}.nav a[aria-current=page]{background:var(--accent-soft);color:var(--accent)}.user-tools{white-space:nowrap}.user-email{max-width:150px;color:var(--muted)}header{margin:0 0 26px}.eyebrow{margin-bottom:8px;letter-spacing:.12em;font-size:.72rem}h1{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.04em}.today-date{color:var(--muted);margin-top:9px}.toolbar{gap:12px;margin:18px 0}.toolbar-group{gap:7px}.toolbar button,.toolbar select,.toolbar input{min-height:42px}button{box-shadow:none;transition:transform .18s,background .18s,box-shadow .18s}button:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(36,41,31,.09)}button.secondary{border:1px solid var(--border);background:#fff;color:#485640}button.secondary:hover{background:#f7f9f5}.stats{gap:14px;margin:20px 0 22px}.stat{position:relative;overflow:hidden;padding:19px 20px;border:1px solid var(--border);border-radius:17px;box-shadow:var(--shadow)}.stat:after{position:absolute;right:-12px;bottom:-24px;width:76px;height:76px;border-radius:50%;background:var(--accent-soft);content:"";opacity:.7}.stat strong,.stat span{position:relative;z-index:1}.stat strong{font-size:1.65rem;letter-spacing:-.03em}.stat span{color:var(--muted)}.content-grid{gap:18px}.panel{padding:24px;border:1px solid var(--border);border-radius:18px;background:var(--surface);box-shadow:var(--shadow)}.panel + .panel{margin-top:16px}.panel-heading{align-items:center;margin-bottom:16px}.panel-heading h2{font-size:1.12rem}.count{padding:4px 9px;border-radius:999px;background:#f4f5f1;color:#687064;font-size:.78rem}.toolbar select,.toolbar input{border-color:var(--border);border-radius:11px}.toolbar input[type=search]{flex:1;min-width:180px}.schedule-list,.todo-list{gap:9px}.schedule-item{grid-template-columns:58px 3px minmax(0,1fr);gap:12px;padding:14px;border-color:#edf0e9;border-radius:13px;background:#fff}.schedule-time{font-variant-numeric:tabular-nums}.schedule-line{background:#dce8d3}.schedule-item h3{font-size:.94rem}.schedule-item p{line-height:1.5}.todo-item{justify-content:flex-start;padding:12px 0}.todo-title{flex:1}.todo-check{flex:0 0 18px;min-width:18px}.field label{font-size:.82rem}.field input{border-color:var(--border);border-radius:11px}.field input:hover{border-color:#c7d1be}.field input:focus,.toolbar input:focus,.toolbar select:focus{border-color:#82966f;outline:3px solid #e8efe2}.submit-button{margin-top:14px}.empty-state{background:#fafbf8;border-color:#dfe5d8}.auth-shell{background:radial-gradient(ellipse at 15% 12%,#e5eddc,transparent 38%),radial-gradient(ellipse at 90% 88%,#e6eee0,transparent 35%),#f7f8f3}.auth-card{padding:36px;border-color:var(--border);border-radius:22px;box-shadow:0 24px 80px rgba(37,47,29,.13)}.auth-card h1{font-size:1.8rem}.auth-copy{color:var(--muted)}.auth-tabs{background:#f4f5f1}.auth-tabs button{border-radius:9px}.auth-note{color:#797f74}.toast{bottom:28px;padding:12px 17px;border:1px solid #ffffff24;border-radius:13px}body.dark{--page-bg:#1d211c;--surface:#272d26;--ink:#f2f3ed;--muted:#b7bcb1;--accent:#b1c99b;--accent-soft:#354331;--border:#3c4439;--shadow:0 10px 28px rgba(0,0,0,.18)}body.dark .topbar{border-color:var(--border);background:rgba(39,45,38,.9)}body.dark .brand{color:#e1ead8}body.dark .nav a{color:#c1c7bb}body.dark .nav a:hover,body.dark .nav a[aria-current=page]{color:#d9e8ce;background:#354331}body.dark .panel,body.dark .stat,body.dark .schedule-item,body.dark .toolbar input,body.dark .toolbar select,body.dark .field input{border-color:var(--border);background:var(--surface);color:var(--ink)}body.dark .count{background:#343a32;color:#c0c5b9}body.dark .schedule-item p,body.dark .todo-title,body.dark label{color:#d1d5ca}body.dark .secondary{background:#343b32;color:#dce8d3;border-color:var(--border)}body.dark .auth-card{background:var(--surface);color:var(--ink)}body.dark .auth-shell{background:#1d211c}body.dark .auth-tabs{background:#20251f}body.dark .auth-tabs button.active{background:#343b32;color:#e5eddd}@media(max-width:900px){.topbar{flex-wrap:wrap}.nav{order:3;flex-basis:100%;justify-content:flex-start}.content-grid{grid-template-columns:minmax(0,1fr) minmax(260px,.82fr)}}@media(max-width:720px){.page-shell{width:min(100% - 28px,620px);padding-top:16px}.topbar{position:static;margin-bottom:28px;padding:11px 13px}.content-grid{grid-template-columns:minmax(0,1fr)}.stats{gap:9px}.stat{padding:14px}.panel{padding:21px}}@media(max-width:520px){.page-shell{width:calc(100% - 24px)}.topbar{gap:8px}.brand{font-size:.92rem}.nav{gap:2px;overflow:auto}.nav a{padding:8px 9px;font-size:.82rem;white-space:nowrap}.user-tools{margin-left:auto}.user-email{max-width:96px}.toolbar{align-items:stretch;flex-direction:column}.toolbar-group{width:100%}.toolbar-group>*{flex:1}.toolbar-group button{padding-inline:10px}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.stat{padding:12px 10px}.stat strong{font-size:1.3rem}.stat span{font-size:.74rem}.panel{padding:16px}.panel-heading{margin-bottom:13px}.schedule-item{grid-template-columns:48px 3px minmax(0,1fr);gap:9px;padding:11px}.form-grid{grid-template-columns:minmax(0,1fr)}.field,.field.full{grid-column:auto}.auth-card{padding:25px 21px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+    :root {
+      --page-bg: #f4f5ef;
+      --surface: #fff;
+      --ink: #24291f;
+      --muted: #73796e;
+      --accent: #4f6841;
+      --accent-soft: #eaf0e5;
+      --border: #e7e9e1;
+      --shadow: 0 10px 28px rgba(36, 41, 31, .055);
+      color: var(--ink);
+      background: var(--page-bg)
+    }
 
+    body {
+      background: var(--page-bg);
+      color: var(--ink);
+      line-height: 1.55
+    }
+
+    .page-shell {
+      width: min(100% - 48px, 1160px);
+      padding: 28px 0 64px
+    }
+
+    .topbar {
+      position: sticky;
+      top: 12px;
+      z-index: 8;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      justify-content: space-between;
+      padding: 10px 12px 10px 18px;
+      margin-bottom: 42px;
+      border: 1px solid rgba(231, 233, 225, .9);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .9);
+      box-shadow: 0 8px 28px rgba(36, 41, 31, .06);
+      backdrop-filter: blur(16px)
+    }
+
+    .brand {
+      white-space: nowrap;
+      color: #34432d;
+      font-size: 1rem
+    }
+
+    .nav {
+      flex: 1;
+      justify-content: center;
+      gap: 4px
+    }
+
+    .nav a {
+      padding: 9px 13px;
+      border-radius: 11px;
+      color: #676d62;
+      font-weight: 650;
+      transition: background .2s, color .2s, transform .2s
+    }
+
+    .nav a:hover {
+      background: #f3f5ef;
+      color: #34432d;
+      transform: translateY(-1px)
+    }
+
+    .nav a[aria-current=page] {
+      background: var(--accent-soft);
+      color: var(--accent)
+    }
+
+    .user-tools {
+      white-space: nowrap
+    }
+
+    .user-email {
+      max-width: 150px;
+      color: var(--muted)
+    }
+
+    header {
+      margin: 0 0 26px
+    }
+
+    .eyebrow {
+      margin-bottom: 8px;
+      letter-spacing: .12em;
+      font-size: .72rem
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -.04em
+    }
+
+    .today-date {
+      color: var(--muted);
+      margin-top: 9px
+    }
+
+    .toolbar {
+      gap: 12px;
+      margin: 18px 0
+    }
+
+    .toolbar-group {
+      gap: 7px
+    }
+
+    .toolbar button,
+    .toolbar select,
+    .toolbar input {
+      min-height: 42px
+    }
+
+    button {
+      box-shadow: none;
+      transition: transform .18s, background .18s, box-shadow .18s
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(36, 41, 31, .09)
+    }
+
+    button.secondary {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: #485640
+    }
+
+    button.secondary:hover {
+      background: #f7f9f5
+    }
+
+    .stats {
+      gap: 14px;
+      margin: 20px 0 22px
+    }
+
+    .stat {
+      position: relative;
+      overflow: hidden;
+      padding: 19px 20px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      box-shadow: var(--shadow)
+    }
+
+    .stat:after {
+      position: absolute;
+      right: -12px;
+      bottom: -24px;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      content: "";
+      opacity: .7
+    }
+
+    .stat strong,
+    .stat span {
+      position: relative;
+      z-index: 1
+    }
+
+    .stat strong {
+      font-size: 1.65rem;
+      letter-spacing: -.03em
+    }
+
+    .stat span {
+      color: var(--muted)
+    }
+
+    .content-grid {
+      gap: 18px
+    }
+
+    .panel {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow)
+    }
+
+    .panel+.panel {
+      margin-top: 16px
+    }
+
+    .panel-heading {
+      align-items: center;
+      margin-bottom: 16px
+    }
+
+    .panel-heading h2 {
+      font-size: 1.12rem
+    }
+
+    .count {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #f4f5f1;
+      color: #687064;
+      font-size: .78rem
+    }
+
+    .toolbar select,
+    .toolbar input {
+      border-color: var(--border);
+      border-radius: 11px
+    }
+
+    .toolbar input[type=search] {
+      flex: 1;
+      min-width: 180px
+    }
+
+    .schedule-list,
+    .todo-list {
+      gap: 9px
+    }
+
+    .schedule-item {
+      grid-template-columns: 58px 3px minmax(0, 1fr);
+      gap: 12px;
+      padding: 14px;
+      border-color: #edf0e9;
+      border-radius: 13px;
+      background: #fff
+    }
+
+    .schedule-time {
+      font-variant-numeric: tabular-nums
+    }
+
+    .schedule-line {
+      background: #dce8d3
+    }
+
+    .schedule-item h3 {
+      font-size: .94rem
+    }
+
+    .schedule-item p {
+      line-height: 1.5
+    }
+
+    .todo-item {
+      justify-content: flex-start;
+      padding: 12px 0
+    }
+
+    .todo-title {
+      flex: 1
+    }
+
+    .todo-check {
+      flex: 0 0 18px;
+      min-width: 18px
+    }
+
+    .field label {
+      font-size: .82rem
+    }
+
+    .field input {
+      border-color: var(--border);
+      border-radius: 11px
+    }
+
+    .field input:hover {
+      border-color: #c7d1be
+    }
+
+    .field input:focus,
+    .toolbar input:focus,
+    .toolbar select:focus {
+      border-color: #82966f;
+      outline: 3px solid #e8efe2
+    }
+
+    .submit-button {
+      margin-top: 14px
+    }
+
+    .empty-state {
+      background: #fafbf8;
+      border-color: #dfe5d8
+    }
+
+    .auth-shell {
+      background: radial-gradient(ellipse at 15% 12%, #e5eddc, transparent 38%), radial-gradient(ellipse at 90% 88%, #e6eee0, transparent 35%), #f7f8f3
+    }
+
+    .auth-card {
+      padding: 36px;
+      border-color: var(--border);
+      border-radius: 22px;
+      box-shadow: 0 24px 80px rgba(37, 47, 29, .13)
+    }
+
+    .auth-card h1 {
+      font-size: 1.8rem
+    }
+
+    .auth-copy {
+      color: var(--muted)
+    }
+
+    .auth-tabs {
+      background: #f4f5f1
+    }
+
+    .auth-tabs button {
+      border-radius: 9px
+    }
+
+    .auth-note {
+      color: #797f74
+    }
+
+    .toast {
+      bottom: 28px;
+      padding: 12px 17px;
+      border: 1px solid #ffffff24;
+      border-radius: 13px
+    }
+
+    body.dark {
+      --page-bg: #1d211c;
+      --surface: #272d26;
+      --ink: #f2f3ed;
+      --muted: #b7bcb1;
+      --accent: #b1c99b;
+      --accent-soft: #354331;
+      --border: #3c4439;
+      --shadow: 0 10px 28px rgba(0, 0, 0, .18)
+    }
+
+    body.dark .topbar {
+      border-color: var(--border);
+      background: rgba(39, 45, 38, .9)
+    }
+
+    body.dark .brand {
+      color: #e1ead8
+    }
+
+    body.dark .nav a {
+      color: #c1c7bb
+    }
+
+    body.dark .nav a:hover,
+    body.dark .nav a[aria-current=page] {
+      color: #d9e8ce;
+      background: #354331
+    }
+
+    body.dark .panel,
+    body.dark .stat,
+    body.dark .schedule-item,
+    body.dark .toolbar input,
+    body.dark .toolbar select,
+    body.dark .field input {
+      border-color: var(--border);
+      background: var(--surface);
+      color: var(--ink)
+    }
+
+    body.dark .count {
+      background: #343a32;
+      color: #c0c5b9
+    }
+
+    body.dark .schedule-item p,
+    body.dark .todo-title,
+    body.dark label {
+      color: #d1d5ca
+    }
+
+    body.dark .secondary {
+      background: #343b32;
+      color: #dce8d3;
+      border-color: var(--border)
+    }
+
+    body.dark .auth-card {
+      background: var(--surface);
+      color: var(--ink)
+    }
+
+    body.dark .auth-shell {
+      background: #1d211c
+    }
+
+    body.dark .auth-tabs {
+      background: #20251f
+    }
+
+    body.dark .auth-tabs button.active {
+      background: #343b32;
+      color: #e5eddd
+    }
+
+    @media(max-width:900px) {
+      .topbar {
+        flex-wrap: wrap
+      }
+
+      .nav {
+        order: 3;
+        flex-basis: 100%;
+        justify-content: flex-start
+      }
+
+      .content-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, .82fr)
+      }
+    }
+
+    @media(max-width:720px) {
+      .page-shell {
+        width: min(100% - 28px, 620px);
+        padding-top: 16px
+      }
+
+      .topbar {
+        position: static;
+        margin-bottom: 28px;
+        padding: 11px 13px
+      }
+
+      .content-grid {
+        grid-template-columns: minmax(0, 1fr)
+      }
+
+      .stats {
+        gap: 9px
+      }
+
+      .stat {
+        padding: 14px
+      }
+
+      .panel {
+        padding: 21px
+      }
+    }
+
+    @media(max-width:520px) {
+      .page-shell {
+        width: calc(100% - 24px)
+      }
+
+      .topbar {
+        gap: 8px
+      }
+
+      .brand {
+        font-size: .92rem
+      }
+
+      .nav {
+        gap: 2px;
+        overflow: auto
+      }
+
+      .nav a {
+        padding: 8px 9px;
+        font-size: .82rem;
+        white-space: nowrap
+      }
+
+      .user-tools {
+        margin-left: auto
+      }
+
+      .user-email {
+        max-width: 96px
+      }
+
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column
+      }
+
+      .toolbar-group {
+        width: 100%
+      }
+
+      .toolbar-group>* {
+        flex: 1
+      }
+
+      .toolbar-group button {
+        padding-inline: 10px
+      }
+
+      .stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+      }
+
+      .stat {
+        padding: 12px 10px
+      }
+
+      .stat strong {
+        font-size: 1.3rem
+      }
+
+      .stat span {
+        font-size: .74rem
+      }
+
+      .panel {
+        padding: 16px
+      }
+
+      .panel-heading {
+        margin-bottom: 13px
+      }
+
+      .schedule-item {
+        grid-template-columns: 48px 3px minmax(0, 1fr);
+        gap: 9px;
+        padding: 11px
+      }
+
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr)
+      }
+
+      .field,
+      .field.full {
+        grid-column: auto
+      }
+
+      .auth-card {
+        padding: 25px 21px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important
+      }
+    }
   </style>
 </head>
+
 <body>
-  <section class="auth-shell" id="auth-shell"><div class="auth-card"><div style="font-size:2rem">🌿</div><h1>歡迎使用日常安排</h1><p class="auth-copy">登入後即可在不同裝置同步你的行程與待辦。</p><div class="auth-tabs"><button type="button" class="active" id="tab-login">登入</button><button type="button" id="tab-signup">建立帳號</button></div><form class="auth-form" id="auth-form"><div class="field"><label for="auth-email">電子郵件</label><input id="auth-email" type="email" autocomplete="email" placeholder="name@example.com" required></div><div class="field"><label for="auth-password">密碼</label><input id="auth-password" type="password" autocomplete="current-password" minlength="8" placeholder="至少 8 個字元" required></div><button class="auth-submit" id="auth-submit" type="submit">登入</button><p class="auth-message" id="auth-message" role="status" aria-live="polite"></p></form><p class="auth-note">使用 Supabase Auth 安全驗證。設定 Supabase 專案並套用附上的資料庫安全政策後，即可啟用登入與同步。</p></div></section>
-  <main class="page-shell page-transition hidden" id="app-shell">
-    <nav class="topbar" aria-label="主要導覽"><span class="brand">🌿 日常安排</span><div class="nav"><a href="index.html" aria-current="page">今日總覽</a><a href="calendar.html">行事曆</a><a href="tasks.html">任務中心</a><a href="about.html">使用說明</a></div><div class="user-tools"><span class="user-email" id="user-email"></span><button class="secondary" id="logout-button" type="button">登出</button></div></nav>
-    <header><p class="eyebrow">YOUR DAY, IN BALANCE</p><h1>今日行程</h1><p class="today-date" id="today-date"></p></header>
-    <div class="toolbar"><div class="toolbar-group"><button class="secondary" id="today-button" type="button">回到今天</button><button class="secondary" id="prev-day" type="button" aria-label="前一天">←</button><input id="view-date" type="date" aria-label="選擇查看日期"><button class="secondary" id="next-day" type="button" aria-label="後一天">→</button></div><div class="toolbar-group"><select id="schedule-filter" aria-label="篩選行程"><option value="all">顯示全部行程</option><option value="today">只看今天</option><option value="upcoming">只看未來</option></select><button class="secondary" id="theme-toggle" type="button">🌙 深色模式</button></div></div>
-    <section class="stats" aria-label="今日摘要"><div class="stat"><strong id="stat-events">0</strong><span>項行程</span></div><div class="stat"><strong id="stat-tasks">0</strong><span>項待辦</span></div><div class="stat"><strong id="stat-done">0%</strong><span>任務完成率</span></div></section>
+  <main class="page-shell page-transition" id="app-shell">
+    <nav class="topbar" aria-label="主要導覽"><span class="brand">🌿 日常安排</span>
+      <div class="nav"><a href="index.html" aria-current="page">今日總覽</a><a href="calendar.html">行事曆</a><a
+          href="tasks.html">任務中心</a><a href="about.html">使用說明</a></div>
+      <div class="user-tools"><img class="nav-avatar hidden" id="nav-avatar" alt="" referrerpolicy="no-referrer"><span
+          class="user-email" id="user-email">驗證中…</span><button class="secondary" id="nav-auth-button" type="button"
+          disabled>登入</button></div>
+    </nav>
+    <header>
+      <p class="eyebrow">YOUR DAY, IN BALANCE</p>
+      <h1>今日行程</h1>
+      <p class="today-date" id="today-date"></p>
+    </header>
+    <section class="auth-panel" id="google-auth-panel" aria-label="Google 帳號登入">
+      <div class="auth-profile">
+        <div class="auth-avatar" id="auth-avatar" aria-hidden="true">G</div>
+        <div class="auth-info">
+          <div class="auth-heading">
+            <p class="auth-name" id="auth-display-name">正在確認登入狀態…</p>
+            <span class="auth-badge loading" id="auth-badge">驗證中</span>
+          </div>
+          <p class="auth-detail" id="auth-detail">連線至 Firebase Authentication，請稍候。</p>
+          <p class="auth-uid hidden" id="auth-uid"></p>
+        </div>
+      </div>
+      <div class="auth-controls">
+        <button class="google-btn" id="google-login-button" type="button" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4"
+              d="M23.49 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.87c2.26-2.08 3.56-5.15 3.56-8.65z" />
+            <path fill="#34A853"
+              d="M12 24c3.24 0 5.95-1.07 7.93-2.91l-3.87-3c-1.07.72-2.44 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.1A12 12 0 0 0 12 24z" />
+            <path fill="#FBBC05"
+              d="M5.28 14.29A7.2 7.2 0 0 1 4.9 12c0-.79.14-1.56.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4-3.1z" />
+            <path fill="#EA4335"
+              d="M12 4.77c1.76 0 3.34.61 4.58 1.8l3.44-3.44C17.94 1.19 15.23 0 12 0A12 12 0 0 0 1.28 6.61l4 3.1C6.23 6.88 8.88 4.77 12 4.77z" />
+          </svg>
+          <span id="google-login-label">使用 Google 登入</span>
+        </button>
+        <button class="secondary hidden" id="logout-button" type="button">登出</button>
+      </div>
+      <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
+    </section>
+    <div class="toolbar">
+      <div class="toolbar-group"><button class="secondary" id="today-button" type="button">回到今天</button><button
+          class="secondary" id="prev-day" type="button" aria-label="前一天">←</button><input id="view-date" type="date"
+          aria-label="選擇查看日期"><button class="secondary" id="next-day" type="button" aria-label="後一天">→</button></div>
+      <div class="toolbar-group"><select id="schedule-filter" aria-label="篩選行程">
+          <option value="all">顯示全部行程</option>
+          <option value="today">只看今天</option>
+          <option value="upcoming">只看未來</option>
+        </select><button class="secondary" id="theme-toggle" type="button">🌙 深色模式</button></div>
+    </div>
+    <section class="stats" aria-label="今日摘要">
+      <div class="stat"><strong id="stat-events">0</strong><span>項行程</span></div>
+      <div class="stat"><strong id="stat-tasks">0</strong><span>項待辦</span></div>
+      <div class="stat"><strong id="stat-done">0%</strong><span>任務完成率</span></div>
+    </section>
 
     <div class="content-grid">
       <section class="panel" aria-labelledby="schedule-heading">
-        <div class="panel-heading"><h2 id="schedule-heading">今天的行程</h2><span class="count" id="schedule-count">3 個安排</span></div>
-        <div class="toolbar"><input id="search-events" type="search" placeholder="搜尋行程名稱或地點" aria-label="搜尋行程"><select id="sort-events" aria-label="排序行程"><option value="time">依時間排序</option><option value="title">依名稱排序</option></select></div>
+        <div class="panel-heading">
+          <h2 id="schedule-heading">今天的行程</h2><span class="count" id="schedule-count">3 個安排</span>
+        </div>
+        <div class="toolbar"><input id="search-events" type="search" placeholder="搜尋行程名稱或地點" aria-label="搜尋行程"><select
+            id="sort-events" aria-label="排序行程">
+            <option value="time">依時間排序</option>
+            <option value="title">依名稱排序</option>
+          </select></div>
         <div class="schedule-list" id="schedule-list">
-          <article class="schedule-item"><time class="schedule-time" datetime="09:00">09:00</time><span class="schedule-line" aria-hidden="true"></span><div><h3>晨間例會</h3><p>確認本週進度 · 會議室 A</p></div></article>
-          <article class="schedule-item"><time class="schedule-time" datetime="12:30">12:30</time><span class="schedule-line" aria-hidden="true"></span><div><h3>午餐聚會</h3><p>和怡君一起吃午餐 · 小巷咖啡</p></div></article>
-          <article class="schedule-item"><time class="schedule-time" datetime="15:00">15:00</time><span class="schedule-line" aria-hidden="true"></span><div><h3>整理專案提案</h3><p>完成簡報初稿 · 個人工作區</p></div></article>
+          <article class="schedule-item"><time class="schedule-time" datetime="09:00">09:00</time><span
+              class="schedule-line" aria-hidden="true"></span>
+            <div>
+              <h3>晨間例會</h3>
+              <p>確認本週進度 · 會議室 A</p>
+            </div>
+          </article>
+          <article class="schedule-item"><time class="schedule-time" datetime="12:30">12:30</time><span
+              class="schedule-line" aria-hidden="true"></span>
+            <div>
+              <h3>午餐聚會</h3>
+              <p>和怡君一起吃午餐 · 小巷咖啡</p>
+            </div>
+          </article>
+          <article class="schedule-item"><time class="schedule-time" datetime="15:00">15:00</time><span
+              class="schedule-line" aria-hidden="true"></span>
+            <div>
+              <h3>整理專案提案</h3>
+              <p>完成簡報初稿 · 個人工作區</p>
+            </div>
+          </article>
         </div>
       </section>
 
       <div>
         <section class="panel" aria-labelledby="todo-heading">
-          <div class="panel-heading"><h2 id="todo-heading">待辦事項</h2><span class="count" id="todo-count">3 項任務</span></div>
+          <div class="panel-heading">
+            <h2 id="todo-heading">待辦事項</h2><span class="count" id="todo-count">3 項任務</span>
+          </div>
           <div class="todo-list" id="todo-list">
-            <div class="todo-item"><input class="todo-check" type="checkbox" aria-label="完成回覆客戶的設計提案"><span class="todo-title">回覆客戶的設計提案</span><span class="status progress">進行中</span></div>
-            <div class="todo-item"><input class="todo-check" type="checkbox" aria-label="完成採買本週所需食材"><span class="todo-title">採買本週所需食材</span><span class="status pending">尚未開始</span></div>
-            <div class="todo-item completed"><input class="todo-check" type="checkbox" checked aria-label="完成繳交交通費報帳單"><span class="todo-title">繳交交通費報帳單</span><span class="status done">已完成</span></div>
+            <div class="todo-item"><input class="todo-check" type="checkbox" aria-label="完成回覆客戶的設計提案"><span
+                class="todo-title">回覆客戶的設計提案</span><span class="status progress">進行中</span></div>
+            <div class="todo-item"><input class="todo-check" type="checkbox" aria-label="完成採買本週所需食材"><span
+                class="todo-title">採買本週所需食材</span><span class="status pending">尚未開始</span></div>
+            <div class="todo-item completed"><input class="todo-check" type="checkbox" checked
+                aria-label="完成繳交交通費報帳單"><span class="todo-title">繳交交通費報帳單</span><span class="status done">已完成</span>
+            </div>
           </div>
         </section>
 
-        <section class="panel" aria-labelledby="add-task-heading"><div class="panel-heading"><h2 id="add-task-heading">快速新增待辦</h2></div><form id="task-form"><div class="field"><label for="task-title">任務內容</label><input id="task-title" name="task" type="text" placeholder="例如：整理桌面" required></div><button class="submit-button" type="submit">加入待辦</button></form></section>
+        <section class="panel" aria-labelledby="add-task-heading">
+          <div class="panel-heading">
+            <h2 id="add-task-heading">快速新增待辦</h2>
+          </div>
+          <form id="task-form">
+            <div class="field"><label for="task-title">任務內容</label><input id="task-title" name="task" type="text"
+                placeholder="例如：整理桌面" required></div><button class="submit-button" type="submit">加入待辦</button>
+          </form>
+        </section>
         <section class="panel" aria-labelledby="add-event-heading">
-          <div class="panel-heading"><h2 id="add-event-heading">新增行程</h2></div>
+          <div class="panel-heading">
+            <h2 id="add-event-heading">新增行程</h2>
+          </div>
           <form id="event-form">
             <div class="form-grid">
-              <div class="field full"><label for="event-title">行程名稱</label><input id="event-title" name="title" type="text" placeholder="例如：團隊討論" required></div>
-              <div class="field"><label for="event-date">日期</label><input id="event-date" name="date" type="date" required></div>
-              <div class="field"><label for="event-time">時間</label><input id="event-time" name="time" type="time" required></div>
-              <div class="field full"><label for="event-location">地點</label><input id="event-location" name="location" type="text" placeholder="輸入地點（選填）"></div>
+              <div class="field full"><label for="event-title">行程名稱</label><input id="event-title" name="title"
+                  type="text" placeholder="例如：團隊討論" required></div>
+              <div class="field"><label for="event-date">日期</label><input id="event-date" name="date" type="date"
+                  required></div>
+              <div class="field"><label for="event-time">時間</label><input id="event-time" name="time" type="time"
+                  required></div>
+              <div class="field full"><label for="event-location">地點</label><input id="event-location" name="location"
+                  type="text" placeholder="輸入地點（選填）"></div>
             </div>
             <button class="submit-button" type="submit">新增行程</button>
             <p class="form-message" id="form-message" aria-live="polite"></p>
@@ -172,32 +1541,490 @@
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script>
-    const $=s=>document.querySelector(s), dateFmt=new Intl.DateTimeFormat("zh-TW",{year:"numeric",month:"long",day:"numeric",weekday:"long"}), shortFmt=new Intl.DateTimeFormat("zh-TW",{month:"numeric",day:"numeric"});
-    const localDate=d=>[d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-"), today=localDate(new Date()); let viewDate=today;
-    const starterEvents=[{id:"seed-1",title:"晨間例會",date:today,time:"09:00",location:"確認本週進度 · 會議室 A"},{id:"seed-2",title:"午餐聚會",date:today,time:"12:30",location:"和怡君一起吃午餐 · 小巷咖啡"},{id:"seed-3",title:"整理專案提案",date:today,time:"15:00",location:"完成簡報初稿 · 個人工作區"}];
-    const starterTasks=[{id:"task-1",title:"回覆客戶的設計提案",status:"progress",done:false},{id:"task-2",title:"採買本週所需食材",status:"pending",done:false},{id:"task-3",title:"繳交交通費報帳單",status:"done",done:true}];
-    function read(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch{return fallback}} let events=[],tasks=[],timer,supabaseClient=null,currentUser=null,authMode="login";
-    async function save(){if(!currentUser)return;try{const [e,t]=await Promise.all([supabaseClient.from("events").upsert(events.map(x=>({...x,user_id:currentUser.id})),{onConflict:"id"}),supabaseClient.from("tasks").upsert(tasks.map(x=>({...x,user_id:currentUser.id})),{onConflict:"id"})]);if(e.error||t.error)throw(e.error||t.error)}catch(err){console.error(err);toast("雲端儲存失敗，請檢查資料庫政策")}}
-    function toast(msg){const el=$("#toast");el.textContent=msg;el.classList.add("show");clearTimeout(timer);timer=setTimeout(()=>el.classList.remove("show"),2400)}
-    function renderEvents(){const date=new Date(viewDate+"T00:00:00");$("#today-date").textContent=dateFmt.format(date);$("#view-date").value=viewDate;const q=$("#search-events").value.trim().toLocaleLowerCase(),filter=$("#schedule-filter").value,sort=$("#sort-events").value;let shown=events.filter(e=>e.date===viewDate);if(filter==="today")shown=shown.filter(e=>e.date===today);if(filter==="upcoming")shown=shown.filter(e=>e.date>=today);if(q)shown=shown.filter(e=>(e.title+" "+e.location).toLocaleLowerCase().includes(q));shown.sort((a,b)=>sort==="title"?a.title.localeCompare(b.title,"zh-Hant"):a.time.localeCompare(b.time));const list=$("#schedule-list");list.replaceChildren();if(!shown.length){const empty=document.createElement("div");empty.className="empty-state";empty.textContent="沒有符合條件的行程，試試新增一筆吧！";list.append(empty)}shown.forEach((e,i)=>{const row=document.createElement("article");row.className="schedule-item";row.style.animationDelay=(i*45)+"ms";const time=document.createElement("time");time.className="schedule-time";time.dateTime=e.time;time.textContent=e.time;const bar=document.createElement("span");bar.className="schedule-line";bar.setAttribute("aria-hidden","true");const details=document.createElement("div"),title=document.createElement("h3"),desc=document.createElement("p"),del=document.createElement("button");title.textContent=e.title;desc.textContent=shortFmt.format(new Date(e.date+"T00:00:00"))+" · "+(e.location||"未指定地點");del.type="button";del.className="secondary";del.textContent="刪除";del.style.cssText="min-height:30px;padding:0 9px;margin-top:8px;font-size:.76rem";del.setAttribute("aria-label","刪除行程："+e.title);del.onclick=()=>{events=events.filter(x=>x.id!==e.id);save();renderEvents();renderStats();toast("行程已刪除")};details.append(title,desc,del);row.append(time,bar,details);list.append(row)});$("#schedule-count").textContent=shown.length+" 個安排";$("#stat-events").textContent=events.filter(e=>e.date===viewDate).length}
-    function renderTasks(){const list=$("#todo-list");list.replaceChildren();tasks.forEach(t=>{const row=document.createElement("div");row.className="todo-item"+(t.done?" completed":"");const check=document.createElement("input");check.type="checkbox";check.className="todo-check";check.checked=t.done;check.setAttribute("aria-label","完成"+t.title);check.onchange=()=>{t.done=check.checked;t.status=t.done?"done":"pending";save();renderTasks();renderStats()};const title=document.createElement("span");title.className="todo-title";title.textContent=t.title;const badge=document.createElement("span");badge.className="status "+(t.done?"done":t.status);badge.textContent=t.done?"已完成":t.status==="progress"?"進行中":"尚未開始";const del=document.createElement("button");del.type="button";del.textContent="移除";del.setAttribute("aria-label","移除待辦："+t.title);del.onclick=()=>{tasks=tasks.filter(x=>x.id!==t.id);save();renderTasks();renderStats();toast("待辦已移除")};row.append(check,title,badge,del);list.append(row)});$("#todo-count").textContent=tasks.length+" 項任務";$("#stat-tasks").textContent=tasks.length;const done=tasks.filter(t=>t.done).length;$("#stat-done").textContent=tasks.length?Math.round(done/tasks.length*100)+"%":"0%"}
-    function renderStats(){renderTasks();renderEvents()}
-    $("#event-date").value=today;$("#view-date").value=today;
-    $("#event-form").addEventListener("submit",e=>{e.preventDefault();if(!e.currentTarget.reportValidity())return;const d=new FormData(e.currentTarget),title=String(d.get("title")).trim(),date=String(d.get("date")),time=String(d.get("time")),location=String(d.get("location")).trim()||"未指定地點";if(!title||!date||!time)return;events.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),title,date,time,location});save();viewDate=date;renderStats();$("#form-message").textContent="已新增「"+title+"」行程。";e.currentTarget.reset();$("#event-date").value=today;toast("行程已新增並自動儲存")});
-    $("#task-form").addEventListener("submit",e=>{e.preventDefault();if(!e.currentTarget.reportValidity())return;const title=$("#task-title").value.trim();if(!title)return;tasks.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),title,status:"pending",done:false});save();e.currentTarget.reset();renderStats();toast("待辦已加入")});
-    ["#search-events"].forEach(s=>$(s).addEventListener("input",renderEvents));["#sort-events","#schedule-filter"].forEach(s=>$(s).addEventListener("change",renderEvents));$("#view-date").addEventListener("change",()=>{if($("#view-date").value){viewDate=$("#view-date").value;renderEvents()}});
-    function shift(n){const d=new Date(viewDate+"T00:00:00");d.setDate(d.getDate()+n);viewDate=localDate(d);renderEvents()}$("#prev-day").onclick=()=>shift(-1);$("#next-day").onclick=()=>shift(1);$("#today-button").onclick=()=>{viewDate=today;$("#schedule-filter").value="all";renderEvents()};
-    $("#theme-toggle").onclick=()=>{document.body.classList.toggle("dark");const dark=document.body.classList.contains("dark");try{localStorage.setItem("daily-planner-theme",dark?"dark":"light")}catch{}$("#theme-toggle").textContent=dark?"☀️ 淺色模式":"🌙 深色模式"};if(read("daily-planner-theme","light")==="dark"){document.body.classList.add("dark");$("#theme-toggle").textContent="☀️ 淺色模式"}
-    const SUPABASE_URL="YOUR_SUPABASE_PROJECT_URL",SUPABASE_ANON_KEY="YOUR_SUPABASE_PUBLISHABLE_KEY";
-    function setMode(mode){authMode=mode;const signup=mode==="signup";$("#tab-login").classList.toggle("active",!signup);$("#tab-signup").classList.toggle("active",signup);$("#auth-submit").textContent=signup?"建立帳號":"登入";$("#auth-password").autocomplete=signup?"new-password":"current-password";$("#auth-message").textContent=""}
-    $("#tab-login").onclick=()=>setMode("login");$("#tab-signup").onclick=()=>setMode("signup");
-    function showApp(user){currentUser=user;$("#auth-shell").classList.add("hidden");$("#app-shell").classList.remove("hidden");$("#user-email").textContent=user.email||"已登入";renderStats()}
-    async function loadData(){const [e,t]=await Promise.all([supabaseClient.from("events").select("id,title,date,time,location").eq("user_id",currentUser.id),supabaseClient.from("tasks").select("id,title,status,done").eq("user_id",currentUser.id)]);if(e.error||t.error)throw(e.error||t.error);events=e.data||[];tasks=t.data||[];if(!events.length)events=starterEvents.map(x=>({...x,id:crypto.randomUUID()}));if(!tasks.length)tasks=starterTasks.map(x=>({...x,id:crypto.randomUUID()}));await save()}
-    $("#auth-form").addEventListener("submit",async e=>{e.preventDefault();const email=$("#auth-email").value.trim(),password=$("#auth-password").value;$("#auth-submit").disabled=true;$("#auth-message").textContent="處理中…";try{const result=authMode==="signup"?await supabaseClient.auth.signUp({email,password}):await supabaseClient.auth.signInWithPassword({email,password});if(result.error)throw result.error;if(authMode==="signup"&&!result.data.session){$("#auth-message").textContent="帳號已建立，請先到信箱完成驗證，再回來登入。";return}currentUser=result.data.user;await loadData();showApp(currentUser);toast("登入成功，資料已同步")}catch(err){$("#auth-message").textContent=err.message||"登入失敗，請檢查帳密與後端設定"}finally{$("#auth-submit").disabled=false}});
-    $("#logout-button").onclick=async()=>{if(supabaseClient)await supabaseClient.auth.signOut();currentUser=null;events=[];tasks=[];$("#app-shell").classList.add("hidden");$("#auth-shell").classList.remove("hidden");$("#auth-password").value="";setMode("login")};
-    async function bootAuth(){if(SUPABASE_URL.startsWith("YOUR_")||SUPABASE_ANON_KEY.startsWith("YOUR_")){$("#auth-message").textContent="尚未連接資料庫。請依 SUPABASE_SETUP.md 建立專案並填入網址與公開金鑰。";return}try{const {createClient}=await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");supabaseClient=createClient(SUPABASE_URL,SUPABASE_ANON_KEY);const {data,error}=await supabaseClient.auth.getSession();if(error)throw error;if(data.session){currentUser=data.session.user;await loadData();showApp(currentUser)}supabaseClient.auth.onAuthStateChange(async(_event,session)=>{if(session&&!currentUser){currentUser=session.user;await loadData();showApp(currentUser)}})}catch(err){$("#auth-message").textContent="無法連線登入服務："+(err.message||"請檢查 Supabase 設定")}}
-    renderStats();bootAuth();
+  <script type="module">
+    const $ = s => document.querySelector(s);
+    const dateFmt = new Intl.DateTimeFormat("zh-TW", { year: "numeric", month: "long", day: "numeric", weekday: "long" });
+    const shortFmt = new Intl.DateTimeFormat("zh-TW", { month: "numeric", day: "numeric" });
+    const localDate = d => [d.getFullYear(), String(d.getMonth() + 1).padStart(2, "0"), String(d.getDate()).padStart(2, "0")].join("-");
+    const today = localDate(new Date());
+    let viewDate = today;
+
+    const EVENTS_KEY = "daily-planner-events-v2";
+    const TASKS_KEY = "daily-planner-tasks-v2";
+    const starterEvents = [
+      { id: "seed-1", title: "晨間例會", date: today, time: "09:00", location: "確認本週進度 · 會議室 A" },
+      { id: "seed-2", title: "午餐聚會", date: today, time: "12:30", location: "和怡君一起吃午餐 · 小巷咖啡" },
+      { id: "seed-3", title: "整理專案提案", date: today, time: "15:00", location: "完成簡報初稿 · 個人工作區" }
+    ];
+    const starterTasks = [
+      { id: "task-1", title: "回覆客戶的設計提案", status: "progress", done: false },
+      { id: "task-2", title: "採買本週所需食材", status: "pending", done: false },
+      { id: "task-3", title: "繳交交通費報帳單", status: "done", done: true }
+    ];
+
+    function read(key, fallback) {
+      try {
+        const v = localStorage.getItem(key);
+        return v !== null ? JSON.parse(v) : fallback;
+      } catch {
+        return fallback;
+      }
+    }
+
+    function readText(key, fallback) {
+      try {
+        return localStorage.getItem(key) || fallback;
+      } catch {
+        return fallback;
+      }
+    }
+
+    let events = read(EVENTS_KEY, null);
+    let tasks = read(TASKS_KEY, null);
+    if (!Array.isArray(events)) {
+      events = starterEvents.map(x => ({ ...x }));
+      try { localStorage.setItem(EVENTS_KEY, JSON.stringify(events)); } catch { }
+    }
+    if (!Array.isArray(tasks)) {
+      tasks = starterTasks.map(x => ({ ...x }));
+      try { localStorage.setItem(TASKS_KEY, JSON.stringify(tasks)); } catch { }
+    }
+
+    let timer;
+    function save() {
+      try {
+        localStorage.setItem(EVENTS_KEY, JSON.stringify(events));
+        localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
+      } catch (err) {
+        console.error(err);
+        toast("本機儲存失敗，請檢查瀏覽器儲存空間設定");
+      }
+    }
+
+    function toast(msg) {
+      const el = $("#toast");
+      el.textContent = msg;
+      el.classList.add("show");
+      clearTimeout(timer);
+      timer = setTimeout(() => el.classList.remove("show"), 2600);
+    }
+
+    function renderEvents() {
+      const date = new Date(viewDate + "T00:00:00");
+      $("#today-date").textContent = dateFmt.format(date);
+      $("#view-date").value = viewDate;
+      const q = $("#search-events").value.trim().toLocaleLowerCase();
+      const filter = $("#schedule-filter").value;
+      const sort = $("#sort-events").value;
+      let shown = events.filter(e => e.date === viewDate);
+      if (filter === "today") shown = shown.filter(e => e.date === today);
+      if (filter === "upcoming") shown = shown.filter(e => e.date >= today);
+      if (q) shown = shown.filter(e => (e.title + " " + (e.location || "")).toLocaleLowerCase().includes(q));
+      shown.sort((a, b) => sort === "title" ? a.title.localeCompare(b.title, "zh-Hant") : a.time.localeCompare(b.time));
+      const list = $("#schedule-list");
+      list.replaceChildren();
+      if (!shown.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty-state";
+        empty.textContent = "沒有符合條件的行程，試試新增一筆吧！";
+        list.append(empty);
+      }
+      shown.forEach((e, i) => {
+        const row = document.createElement("article");
+        row.className = "schedule-item";
+        row.style.animationDelay = (i * 45) + "ms";
+        const time = document.createElement("time");
+        time.className = "schedule-time";
+        time.dateTime = e.time;
+        time.textContent = e.time;
+        const bar = document.createElement("span");
+        bar.className = "schedule-line";
+        bar.setAttribute("aria-hidden", "true");
+        const details = document.createElement("div");
+        const title = document.createElement("h3");
+        const desc = document.createElement("p");
+        const del = document.createElement("button");
+        title.textContent = e.title;
+        desc.textContent = shortFmt.format(new Date(e.date + "T00:00:00")) + " · " + (e.location || "未指定地點");
+        del.type = "button";
+        del.className = "secondary";
+        del.textContent = "刪除";
+        del.style.cssText = "min-height:30px;padding:0 9px;margin-top:8px;font-size:.76rem";
+        del.setAttribute("aria-label", "刪除行程：" + e.title);
+        del.onclick = () => {
+          events = events.filter(x => x.id !== e.id);
+          save();
+          renderStats();
+          toast("行程已刪除");
+        };
+        details.append(title, desc, del);
+        row.append(time, bar, details);
+        list.append(row);
+      });
+      $("#schedule-count").textContent = shown.length + " 個安排";
+      $("#stat-events").textContent = events.filter(e => e.date === viewDate).length;
+    }
+
+    function renderTasks() {
+      const list = $("#todo-list");
+      list.replaceChildren();
+      tasks.forEach(t => {
+        const row = document.createElement("div");
+        row.className = "todo-item" + (t.done ? " completed" : "");
+        const check = document.createElement("input");
+        check.type = "checkbox";
+        check.className = "todo-check";
+        check.checked = t.done;
+        check.setAttribute("aria-label", "完成" + t.title);
+        check.onchange = () => {
+          t.done = check.checked;
+          t.status = t.done ? "done" : "pending";
+          save();
+          renderStats();
+        };
+        const title = document.createElement("span");
+        title.className = "todo-title";
+        title.textContent = t.title;
+        const badge = document.createElement("span");
+        badge.className = "status " + (t.done ? "done" : t.status);
+        badge.textContent = t.done ? "已完成" : t.status === "progress" ? "進行中" : "尚未開始";
+        const del = document.createElement("button");
+        del.type = "button";
+        del.textContent = "移除";
+        del.setAttribute("aria-label", "移除待辦：" + t.title);
+        del.onclick = () => {
+          tasks = tasks.filter(x => x.id !== t.id);
+          save();
+          renderStats();
+          toast("待辦已移除");
+        };
+        row.append(check, title, badge, del);
+        list.append(row);
+      });
+      $("#todo-count").textContent = tasks.length + " 項任務";
+      $("#stat-tasks").textContent = tasks.length;
+      const done = tasks.filter(t => t.done).length;
+      $("#stat-done").textContent = tasks.length ? Math.round(done / tasks.length * 100) + "%" : "0%";
+    }
+
+    function renderStats() {
+      renderTasks();
+      renderEvents();
+    }
+
+    $("#event-date").value = today;
+    $("#view-date").value = today;
+    $("#event-form").addEventListener("submit", e => {
+      e.preventDefault();
+      if (!e.currentTarget.reportValidity()) return;
+      const d = new FormData(e.currentTarget);
+      const title = String(d.get("title")).trim();
+      const date = String(d.get("date"));
+      const time = String(d.get("time"));
+      const location = String(d.get("location")).trim() || "未指定地點";
+      if (!title || !date || !time) return;
+      events.push({ id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()), title, date, time, location });
+      save();
+      viewDate = date;
+      renderStats();
+      $("#form-message").textContent = "已新增「" + title + "」行程。";
+      e.currentTarget.reset();
+      $("#event-date").value = today;
+      toast("行程已新增並自動儲存");
+    });
+
+    $("#task-form").addEventListener("submit", e => {
+      e.preventDefault();
+      if (!e.currentTarget.reportValidity()) return;
+      const title = $("#task-title").value.trim();
+      if (!title) return;
+      tasks.push({ id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()), title, status: "pending", done: false });
+      save();
+      e.currentTarget.reset();
+      renderStats();
+      toast("待辦已加入");
+    });
+
+    ["#search-events"].forEach(s => $(s).addEventListener("input", renderEvents));
+    ["#sort-events", "#schedule-filter"].forEach(s => $(s).addEventListener("change", renderEvents));
+    $("#view-date").addEventListener("change", () => {
+      if ($("#view-date").value) {
+        viewDate = $("#view-date").value;
+        renderEvents();
+      }
+    });
+
+    function shift(n) {
+      const d = new Date(viewDate + "T00:00:00");
+      d.setDate(d.getDate() + n);
+      viewDate = localDate(d);
+      renderEvents();
+    }
+    $("#prev-day").onclick = () => shift(-1);
+    $("#next-day").onclick = () => shift(1);
+    $("#today-button").onclick = () => {
+      viewDate = today;
+      $("#schedule-filter").value = "all";
+      renderEvents();
+    };
+
+    $("#theme-toggle").onclick = () => {
+      document.body.classList.toggle("dark");
+      const dark = document.body.classList.contains("dark");
+      try { localStorage.setItem("daily-planner-theme", dark ? "dark" : "light"); } catch { }
+      $("#theme-toggle").textContent = dark ? "☀️ 淺色模式" : "🌙 深色模式";
+    };
+    if (readText("daily-planner-theme", "light") === "dark") {
+      document.body.classList.add("dark");
+      $("#theme-toggle").textContent = "☀️ 淺色模式";
+    }
+
+    renderStats();
+
+    // --- Firebase Modular SDK: Google 登入（保留 Console authDomain，不新增資料庫）---
+    const firebaseConfig = {
+      apiKey: "AIzaSyDcV8Ntjw_2_no0gLVlr-eKLLGb37p8m98",
+      authDomain: "appp-invent.firebaseapp.com",
+      projectId: "appp-invent",
+      storageBucket: "appp-invent.firebasestorage.app",
+      messagingSenderId: "673717572825",
+      appId: "1:673717572825:web:6c73bd3efe861da047dac8",
+      measurementId: "G-9TV9F3GHQR"
+    };
+
+    const ui = {
+      avatar: $("#auth-avatar"),
+      navAvatar: $("#nav-avatar"),
+      navUser: $("#user-email"),
+      navBtn: $("#nav-auth-button"),
+      name: $("#auth-display-name"),
+      badge: $("#auth-badge"),
+      detail: $("#auth-detail"),
+      uid: $("#auth-uid"),
+      loginBtn: $("#google-login-button"),
+      loginLabel: $("#google-login-label"),
+      logoutBtn: $("#logout-button"),
+      msg: $("#auth-message")
+    };
+
+    let firebaseAuth = null;
+    let googleProvider = null;
+    let signInPopupFn = null;
+    let signOutFn = null;
+    let currentUser = null;
+    let authBusy = false;
+
+    function setAuthMessage(text, isError = false) {
+      ui.msg.textContent = text || "";
+      ui.msg.classList.toggle("error", Boolean(isError && text));
+    }
+
+    function renderAvatar(photoURL, fallbackLabel) {
+      ui.avatar.replaceChildren();
+      const letter = (fallbackLabel || "G").trim().charAt(0).toUpperCase() || "G";
+      if (photoURL) {
+        const img = document.createElement("img");
+        img.src = photoURL;
+        img.alt = (fallbackLabel || "使用者") + " 頭像";
+        img.referrerPolicy = "no-referrer";
+        img.onerror = () => {
+          ui.avatar.replaceChildren(document.createTextNode(letter));
+          ui.navAvatar.classList.add("hidden");
+          ui.navAvatar.removeAttribute("src");
+        };
+        ui.avatar.append(img);
+        ui.navAvatar.src = photoURL;
+        ui.navAvatar.alt = img.alt;
+        ui.navAvatar.classList.remove("hidden");
+      } else {
+        ui.avatar.textContent = letter;
+        ui.navAvatar.classList.add("hidden");
+        ui.navAvatar.removeAttribute("src");
+      }
+    }
+
+    function setAuthState(state, user = null) {
+      if (state === "loading") {
+        renderAvatar("", "…");
+        ui.name.textContent = "正在確認登入狀態…";
+        ui.badge.textContent = "驗證中";
+        ui.badge.className = "auth-badge loading";
+        ui.detail.textContent = "連線至 Firebase Authentication，請稍候。";
+        ui.uid.textContent = "";
+        ui.uid.classList.add("hidden");
+        ui.loginBtn.classList.remove("hidden");
+        ui.loginBtn.disabled = true;
+        ui.loginLabel.textContent = "載入中…";
+        ui.logoutBtn.classList.add("hidden");
+        ui.logoutBtn.disabled = true;
+        ui.navUser.textContent = "驗證中…";
+        ui.navBtn.textContent = "登入";
+        ui.navBtn.disabled = true;
+        return;
+      }
+
+      if (state === "signing-in") {
+        ui.badge.textContent = "登入中";
+        ui.badge.className = "auth-badge loading";
+        ui.loginBtn.disabled = true;
+        ui.loginLabel.textContent = "Google 登入中…";
+        ui.navBtn.disabled = true;
+        ui.navBtn.textContent = "登入中…";
+        return;
+      }
+
+      if (state === "signing-out") {
+        ui.badge.textContent = "登出中";
+        ui.badge.className = "auth-badge loading";
+        ui.logoutBtn.disabled = true;
+        ui.navBtn.disabled = true;
+        ui.navBtn.textContent = "登出中…";
+        return;
+      }
+
+      if (state === "signed-in" && user) {
+        const displayName = user.displayName || user.email || "Google 使用者";
+        renderAvatar(user.photoURL, displayName);
+        ui.name.textContent = displayName;
+        ui.badge.textContent = "已登入";
+        ui.badge.className = "auth-badge signed-in";
+        ui.detail.textContent = user.email ? "Google 帳號：" + user.email : "已透過 Firebase Google 驗證";
+        ui.uid.textContent = "Firebase UID: " + user.uid;
+        ui.uid.classList.remove("hidden");
+        ui.loginBtn.classList.add("hidden");
+        ui.loginBtn.disabled = false;
+        ui.loginLabel.textContent = "使用 Google 登入";
+        ui.logoutBtn.classList.remove("hidden");
+        ui.logoutBtn.disabled = false;
+        ui.navUser.textContent = displayName;
+        ui.navBtn.textContent = "登出";
+        ui.navBtn.disabled = false;
+        return;
+      }
+
+      // signed-out（訪客畫面，清除前一位使用者所有資料）
+      renderAvatar("", "G");
+      ui.name.textContent = "訪客模式";
+      ui.badge.textContent = "未登入";
+      ui.badge.className = "auth-badge signed-out";
+      ui.detail.textContent = "使用 Google 帳號登入以檢視你的個人身分資訊。";
+      ui.uid.textContent = "";
+      ui.uid.classList.add("hidden");
+      ui.loginBtn.classList.remove("hidden");
+      ui.loginBtn.disabled = !firebaseAuth;
+      ui.loginLabel.textContent = "使用 Google 登入";
+      ui.logoutBtn.classList.add("hidden");
+      ui.logoutBtn.disabled = false;
+      ui.navUser.textContent = "訪客";
+      ui.navBtn.textContent = "Google 登入";
+      ui.navBtn.disabled = !firebaseAuth;
+    }
+
+    function formatAuthError(err) {
+      const code = err && err.code ? err.code : "";
+      switch (code) {
+        case "auth/popup-closed-by-user":
+        case "auth/cancelled-popup-request":
+          return { text: "已取消 Google 登入，目前維持未登入狀態。", isError: false };
+        case "auth/popup-blocked":
+          return { text: "瀏覽器封鎖了登入彈窗，請允許此網站顯示彈出視窗後再試一次。", isError: true };
+        case "auth/unauthorized-domain":
+          return { text: "此網域尚未加入 Firebase Authorized domains，請至 Firebase Console → Authentication → Settings 新增網域。", isError: true };
+        case "auth/operation-not-allowed":
+          return { text: "Firebase 尚未啟用 Google 登入，請至 Authentication → Sign-in method 啟用並按 Save。", isError: true };
+        case "auth/network-request-failed":
+          return { text: "網路連線異常，無法聯絡 Firebase 驗證服務，請稍後再試。", isError: true };
+        default:
+          return { text: "Google 登入失敗：" + (err && err.message ? err.message : "發生未知錯誤") + (code ? " (" + code + ")" : ""), isError: true };
+      }
+    }
+
+    async function handleGoogleLogin() {
+      if (!firebaseAuth || authBusy) return;
+      authBusy = true;
+      setAuthMessage("");
+      setAuthState("signing-in");
+      try {
+        const result = await signInPopupFn(firebaseAuth, googleProvider);
+        currentUser = result.user;
+        setAuthState("signed-in", currentUser);
+        setAuthMessage("Google 登入成功，歡迎 " + (currentUser.displayName || currentUser.email || "") + "！");
+        toast("已透過 Google 登入");
+      } catch (err) {
+        console.error("Google sign-in error:", err);
+        currentUser = firebaseAuth.currentUser || null;
+        setAuthState(currentUser ? "signed-in" : "signed-out", currentUser);
+        const info = formatAuthError(err);
+        setAuthMessage(info.text, info.isError);
+      } finally {
+        authBusy = false;
+      }
+    }
+
+    async function handleLogout() {
+      if (!firebaseAuth || authBusy) return;
+      authBusy = true;
+      setAuthMessage("");
+      setAuthState("signing-out");
+      try {
+        await signOutFn(firebaseAuth);
+        currentUser = null;
+        setAuthState("signed-out");
+        setAuthMessage("已登出並清除登入資訊。");
+        toast("已登出 Google 帳號");
+      } catch (err) {
+        console.error("Sign-out error:", err);
+        currentUser = firebaseAuth.currentUser || null;
+        setAuthState(currentUser ? "signed-in" : "signed-out", currentUser);
+        setAuthMessage("登出失敗：" + (err && err.message ? err.message : "請稍後再試"), true);
+      } finally {
+        authBusy = false;
+      }
+    }
+
+    ui.loginBtn.addEventListener("click", handleGoogleLogin);
+    ui.logoutBtn.addEventListener("click", handleLogout);
+    ui.navBtn.addEventListener("click", () => {
+      if (currentUser) handleLogout();
+      else handleGoogleLogin();
+    });
+
+    async function bootFirebaseAuth() {
+      setAuthState("loading");
+      if (location.protocol === "file:") {
+        setAuthState("signed-out");
+        setAuthMessage("偵測到以本機檔案（file://）開啟，請改用 GitHub Pages（HTTPS）或 localhost 網址來測試 Google 登入。", true);
+        return;
+      }
+      try {
+        const [appMod, authMod] = await Promise.all([
+          import("https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"),
+          import("https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js")
+        ]);
+        const app = appMod.initializeApp(firebaseConfig);
+        firebaseAuth = authMod.getAuth(app);
+        googleProvider = new authMod.GoogleAuthProvider();
+        googleProvider.setCustomParameters({ prompt: "select_account" });
+        signInPopupFn = authMod.signInWithPopup;
+        signOutFn = authMod.signOut;
+
+        authMod.onAuthStateChanged(firebaseAuth, user => {
+          currentUser = user || null;
+          if (!authBusy) {
+            setAuthState(currentUser ? "signed-in" : "signed-out", currentUser);
+          }
+        });
+      } catch (err) {
+        console.error("Firebase init error:", err);
+        firebaseAuth = null;
+        currentUser = null;
+        setAuthState("signed-out");
+        setAuthMessage("無法載入 Firebase Auth SDK：" + (err && err.message ? err.message : "請檢查網路連線"), true);
+      }
+    }
+
+    bootFirebaseAuth();
   </script>
 </body>
+
 </html>
