@@ -1383,6 +1383,70 @@
       }
     }
 
+    .auth-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 0 0 22px;
+    }
+
+    .auth-grid .auth-panel {
+      margin: 0;
+      align-content: space-between;
+    }
+
+    .auth-provider-tag {
+      display: inline-block;
+      margin-bottom: 4px;
+      font-size: .72rem;
+      font-weight: 750;
+      letter-spacing: .06em;
+      color: var(--muted);
+    }
+
+    .line-avatar {
+      border-color: #d3f2dd;
+      background: #e9f9ee;
+      color: #06c755;
+    }
+
+    .line-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 0;
+      border-radius: 11px;
+      background: #06c755;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .line-btn:hover {
+      background: #05b04b;
+    }
+
+    .line-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    body.dark .line-avatar {
+      border-color: #265c3a;
+      background: #1d3b28;
+      color: #5ee38e;
+    }
+
+    @media(max-width:860px) {
+      .auth-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
     @media(prefers-reduced-motion:reduce) {
 
       *,
@@ -1395,6 +1459,7 @@
       }
     }
   </style>
+  <script defer src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
 <body>
@@ -1411,36 +1476,65 @@
       <h1>今日行程</h1>
       <p class="today-date" id="today-date"></p>
     </header>
-    <section class="auth-panel" id="google-auth-panel" aria-label="Google 帳號登入">
-      <div class="auth-profile">
-        <div class="auth-avatar" id="auth-avatar" aria-hidden="true">G</div>
-        <div class="auth-info">
-          <div class="auth-heading">
-            <p class="auth-name" id="auth-display-name">正在確認登入狀態…</p>
-            <span class="auth-badge loading" id="auth-badge">驗證中</span>
+    <div class="auth-grid" aria-label="帳號登入狀態">
+      <section class="auth-panel" id="google-auth-panel" aria-label="Google 帳號登入">
+        <div class="auth-profile">
+          <div class="auth-avatar" id="auth-avatar" aria-hidden="true">G</div>
+          <div class="auth-info">
+            <span class="auth-provider-tag">GOOGLE · FIREBASE AUTH</span>
+            <div class="auth-heading">
+              <p class="auth-name" id="auth-display-name">正在確認登入狀態…</p>
+              <span class="auth-badge loading" id="auth-badge">驗證中</span>
+            </div>
+            <p class="auth-detail" id="auth-detail">連線至 Firebase Authentication，請稍候。</p>
+            <p class="auth-uid hidden" id="auth-uid"></p>
           </div>
-          <p class="auth-detail" id="auth-detail">連線至 Firebase Authentication，請稍候。</p>
-          <p class="auth-uid hidden" id="auth-uid"></p>
         </div>
-      </div>
-      <div class="auth-controls">
-        <button class="google-btn" id="google-login-button" type="button" disabled>
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="#4285F4"
-              d="M23.49 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.87c2.26-2.08 3.56-5.15 3.56-8.65z" />
-            <path fill="#34A853"
-              d="M12 24c3.24 0 5.95-1.07 7.93-2.91l-3.87-3c-1.07.72-2.44 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.1A12 12 0 0 0 12 24z" />
-            <path fill="#FBBC05"
-              d="M5.28 14.29A7.2 7.2 0 0 1 4.9 12c0-.79.14-1.56.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4-3.1z" />
-            <path fill="#EA4335"
-              d="M12 4.77c1.76 0 3.34.61 4.58 1.8l3.44-3.44C17.94 1.19 15.23 0 12 0A12 12 0 0 0 1.28 6.61l4 3.1C6.23 6.88 8.88 4.77 12 4.77z" />
-          </svg>
-          <span id="google-login-label">使用 Google 登入</span>
-        </button>
-        <button class="secondary hidden" id="logout-button" type="button">登出</button>
-      </div>
-      <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
-    </section>
+        <div class="auth-controls">
+          <button class="google-btn" id="google-login-button" type="button" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285F4"
+                d="M23.49 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.87c2.26-2.08 3.56-5.15 3.56-8.65z" />
+              <path fill="#34A853"
+                d="M12 24c3.24 0 5.95-1.07 7.93-2.91l-3.87-3c-1.07.72-2.44 1.15-4.06 1.15-3.12 0-5.77-2.11-6.72-4.95H1.28v3.1A12 12 0 0 0 12 24z" />
+              <path fill="#FBBC05"
+                d="M5.28 14.29A7.2 7.2 0 0 1 4.9 12c0-.79.14-1.56.38-2.29v-3.1H1.28A12 12 0 0 0 0 12c0 1.94.46 3.77 1.28 5.39l4-3.1z" />
+              <path fill="#EA4335"
+                d="M12 4.77c1.76 0 3.34.61 4.58 1.8l3.44-3.44C17.94 1.19 15.23 0 12 0A12 12 0 0 0 1.28 6.61l4 3.1C6.23 6.88 8.88 4.77 12 4.77z" />
+            </svg>
+            <span id="google-login-label">使用 Google 登入</span>
+          </button>
+          <button class="secondary hidden" id="logout-button" type="button">登出</button>
+        </div>
+        <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="auth-panel" id="line-auth-panel" aria-label="LINE 帳號登入">
+        <div class="auth-profile">
+          <div class="auth-avatar line-avatar" id="line-avatar" aria-hidden="true">L</div>
+          <div class="auth-info">
+            <span class="auth-provider-tag">LINE · LIFF SDK</span>
+            <div class="auth-heading">
+              <p class="auth-name" id="line-display-name">正在初始化 LINE LIFF…</p>
+              <span class="auth-badge loading" id="line-badge">初始化中</span>
+            </div>
+            <p class="auth-detail" id="line-detail">檢查 LINE 登入狀態與執行環境，請稍候。</p>
+            <p class="auth-uid hidden" id="line-uid"></p>
+          </div>
+        </div>
+        <div class="auth-controls">
+          <button class="line-btn" id="line-login-button" type="button" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor"
+                d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
+            </svg>
+            <span id="line-login-label">使用 LINE 登入</span>
+          </button>
+          <button class="secondary hidden" id="line-logout-button" type="button">登出 LINE</button>
+        </div>
+        <p class="auth-message" id="line-auth-message" role="status" aria-live="polite"></p>
+      </section>
+    </div>
     <div class="toolbar">
       <div class="toolbar-group"><button class="secondary" id="today-button" type="button">回到今天</button><button
           class="secondary" id="prev-day" type="button" aria-label="前一天">←</button><input id="view-date" type="date"
@@ -2024,6 +2118,220 @@
     }
 
     bootFirebaseAuth();
+
+    // --- LINE LIFF SDK: LINE 登入（僅使用公開 LIFF ID，與 Firebase 身分獨立）---
+    const LINE_LIFF_ID = "2012712053-OllM0QOy";
+
+    const lineUi = {
+      avatar: $("#line-avatar"),
+      name: $("#line-display-name"),
+      badge: $("#line-badge"),
+      detail: $("#line-detail"),
+      uid: $("#line-uid"),
+      loginBtn: $("#line-login-button"),
+      loginLabel: $("#line-login-label"),
+      logoutBtn: $("#line-logout-button"),
+      msg: $("#line-auth-message")
+    };
+
+    let liffReady = false;
+    let lineBusy = false;
+
+    function setLineMessage(text, isError = false) {
+      lineUi.msg.textContent = text || "";
+      lineUi.msg.classList.toggle("error", Boolean(isError && text));
+    }
+
+    function renderLineAvatar(pictureUrl, fallbackLabel) {
+      lineUi.avatar.replaceChildren();
+      const letter = (fallbackLabel || "L").trim().charAt(0).toUpperCase() || "L";
+      if (pictureUrl) {
+        const img = document.createElement("img");
+        img.src = pictureUrl;
+        img.alt = (fallbackLabel || "LINE 使用者") + " 頭像";
+        img.referrerPolicy = "no-referrer";
+        img.onerror = () => {
+          lineUi.avatar.replaceChildren(document.createTextNode(letter));
+        };
+        lineUi.avatar.append(img);
+      } else {
+        lineUi.avatar.textContent = letter;
+      }
+    }
+
+    function setLineState(state, profile = null, inClient = false) {
+      const envLabel = inClient ? "LINE App 內建視窗（LIFF）" : "一般外部瀏覽器";
+
+      if (state === "loading") {
+        renderLineAvatar("", "…");
+        lineUi.name.textContent = "正在初始化 LINE LIFF…";
+        lineUi.badge.textContent = "初始化中";
+        lineUi.badge.className = "auth-badge loading";
+        lineUi.detail.textContent = "檢查 LINE 登入狀態與執行環境，請稍候。";
+        lineUi.uid.textContent = "";
+        lineUi.uid.classList.add("hidden");
+        lineUi.loginBtn.classList.remove("hidden");
+        lineUi.loginBtn.disabled = true;
+        lineUi.loginLabel.textContent = "載入中…";
+        lineUi.logoutBtn.classList.add("hidden");
+        lineUi.logoutBtn.disabled = true;
+        return;
+      }
+
+      if (state === "signing-in") {
+        lineUi.badge.textContent = "前往授權";
+        lineUi.badge.className = "auth-badge loading";
+        lineUi.loginBtn.disabled = true;
+        lineUi.loginLabel.textContent = "前往 LINE 登入…";
+        return;
+      }
+
+      if (state === "signed-in" && profile) {
+        const displayName = profile.displayName || "LINE 使用者";
+        renderLineAvatar(profile.pictureUrl, displayName);
+        lineUi.name.textContent = displayName;
+        lineUi.badge.textContent = inClient ? "LINE 內已登入" : "已登入";
+        lineUi.badge.className = "auth-badge signed-in";
+        const statusPart = profile.statusMessage ? " · " + profile.statusMessage : "";
+        lineUi.detail.textContent = "環境：" + envLabel + statusPart;
+        lineUi.uid.textContent = "LINE User ID: " + profile.userId;
+        lineUi.uid.classList.remove("hidden");
+        lineUi.loginBtn.classList.add("hidden");
+        lineUi.loginBtn.disabled = false;
+        lineUi.loginLabel.textContent = "使用 LINE 登入";
+        lineUi.logoutBtn.classList.remove("hidden");
+        lineUi.logoutBtn.disabled = false;
+        lineUi.logoutBtn.textContent = inClient ? "關閉 LIFF 視窗" : "登出 LINE";
+        return;
+      }
+
+      // signed-out（清除前一位 LINE 使用者資訊）
+      renderLineAvatar("", "L");
+      lineUi.name.textContent = "尚未透過 LINE 登入";
+      lineUi.badge.textContent = "未登入";
+      lineUi.badge.className = "auth-badge signed-out";
+      lineUi.detail.textContent = liffReady
+        ? "環境：" + envLabel + " · 點擊按鈕透過 LINE 授權取得名稱與頭像。"
+        : "使用 LINE 帳號登入以檢視個人名稱與頭像。";
+      lineUi.uid.textContent = "";
+      lineUi.uid.classList.add("hidden");
+      lineUi.loginBtn.classList.remove("hidden");
+      lineUi.loginBtn.disabled = !liffReady;
+      lineUi.loginLabel.textContent = "使用 LINE 登入";
+      lineUi.logoutBtn.classList.add("hidden");
+      lineUi.logoutBtn.disabled = false;
+      lineUi.logoutBtn.textContent = "登出 LINE";
+    }
+
+    function formatLineError(err) {
+      const msg = err && err.message ? err.message : "發生未知錯誤";
+      const code = err && err.code ? err.code : "";
+      if (/scope|permission|403/i.test(msg + " " + code)) {
+        return "取得 LINE 個人資料失敗：請確認 LIFF App 已勾選 profile 權限，且測試帳號已加入 Developing 角色。";
+      }
+      if (/endpoint|redirect|invalid/i.test(msg + " " + code)) {
+        return "LINE LIFF 設定不符：請確認 LINE Developers Console 的 Endpoint URL 與目前網址一致（" + msg + "）。";
+      }
+      return "LINE LIFF 錯誤：" + msg + (code ? " (" + code + ")" : "");
+    }
+
+    function handleLineLogin() {
+      if (!liffReady || lineBusy || typeof window.liff === "undefined") return;
+      lineBusy = true;
+      setLineMessage("");
+      setLineState("signing-in");
+      try {
+        window.liff.login({
+          redirectUri: window.location.origin + window.location.pathname
+        });
+      } catch (err) {
+        console.error("LINE login error:", err);
+        lineBusy = false;
+        setLineState("signed-out", null, window.liff.isInClient());
+        setLineMessage(formatLineError(err), true);
+      }
+    }
+
+    function handleLineLogout() {
+      if (!liffReady || lineBusy || typeof window.liff === "undefined") return;
+      const inClient = window.liff.isInClient();
+      if (inClient) {
+        setLineMessage("LINE 內建視窗由 LINE 帳號自動登入；如需測試登出，請於一般外部瀏覽器開啟網站。正在關閉視窗…");
+        if (typeof window.liff.closeWindow === "function") {
+          window.liff.closeWindow();
+        }
+        return;
+      }
+      lineBusy = true;
+      try {
+        window.liff.logout();
+        if (window.location.search) {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        setLineState("signed-out", null, false);
+        setLineMessage("已登出 LINE 並清除登入資訊。");
+        toast("已登出 LINE 帳號");
+      } catch (err) {
+        console.error("LINE logout error:", err);
+        setLineMessage(formatLineError(err), true);
+      } finally {
+        lineBusy = false;
+      }
+    }
+
+    lineUi.loginBtn.addEventListener("click", handleLineLogin);
+    lineUi.logoutBtn.addEventListener("click", handleLineLogout);
+
+    async function bootLineLiff() {
+      setLineState("loading");
+      if (location.protocol === "file:") {
+        setLineState("signed-out");
+        setLineMessage("偵測到以本機檔案（file://）開啟，請改用 GitHub Pages（HTTPS）網址或 LINE LIFF URL 測試 LINE 登入。", true);
+        return;
+      }
+      if (typeof window.liff === "undefined") {
+        setLineState("signed-out");
+        setLineMessage("無法載入 LINE LIFF SDK，請檢查網路連線後重新整理。", true);
+        return;
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const oauthError = params.get("error");
+      const oauthErrorDesc = params.get("error_description");
+
+      try {
+        await window.liff.init({ liffId: LINE_LIFF_ID });
+        liffReady = true;
+        const inClient = window.liff.isInClient();
+
+        if (window.liff.isLoggedIn()) {
+          const profile = await window.liff.getProfile();
+          setLineState("signed-in", profile, inClient);
+          setLineMessage(
+            inClient
+              ? "已於 LINE App 內自動完成 LIFF 初始化並讀取你的資料。"
+              : "已透過 LINE 登入，重新整理後可維持登入狀態。"
+          );
+        } else {
+          setLineState("signed-out", null, inClient);
+          if (oauthError) {
+            setLineMessage(
+              oauthError === "access_denied"
+                ? "已取消 LINE 登入授權，目前維持未登入狀態。"
+                : "LINE 授權未完成：" + (oauthErrorDesc || oauthError),
+              oauthError !== "access_denied"
+            );
+          }
+        }
+      } catch (err) {
+        console.error("LINE LIFF init error:", err);
+        liffReady = false;
+        setLineState("signed-out");
+        setLineMessage(formatLineError(err), true);
+      }
+    }
+
+    bootLineLiff();
   </script>
 </body>
 
