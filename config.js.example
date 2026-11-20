@@ -1,0 +1,4 @@
+// Copy these values into index.html where SUPABASE_URL and SUPABASE_ANON_KEY are defined.
+// The publishable/anon key is safe to expose only when Row Level Security is enabled.
+const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
+const SUPABASE_ANON_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
